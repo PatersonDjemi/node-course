@@ -29,10 +29,6 @@ app.use(function (req, res, next) {
 });
 
 
-app.use(function (req, res, next) {
-    res.render('basic.hbs');
-})
-
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('getCurrentYear', function () {
    return new Date().getFullYear();
@@ -68,6 +64,18 @@ app.get('/bad', function (req, res) {
     res.send({
        errorMessage: "unable to open that page"
     });
+});
+
+app.get('/projects', function (req, res) {
+    res.render('projects.hbs', {
+        titre: 'nouvelle page heroku',
+        content: "hallo heroku"
+    })
+});
+
+
+app.use(function (req, res, next) {
+    res.render('basic.hbs');
 });
 
 
